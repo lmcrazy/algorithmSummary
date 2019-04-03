@@ -8,9 +8,9 @@ package com.javasuanfa.everyday;
  **/
 public class FindPeakElement {
     public static void main(String[] args) {
-        int[] arr = {0, 2, 1, 1, 1, 6, 5};
+        int[] arr = {0, 2, 1, 3,4 , 6, 5};
         System.out.println(getAPeakEle(arr));
-
+        System.out.println(findPeakElement(arr));
 
     }
     /** 给定的数组的元素是按照下面的方式排放的
@@ -43,5 +43,24 @@ public class FindPeakElement {
         }
 
         return low;
+    }
+
+    public static int findPeakElement(int[] nums){
+        int length = nums.length;
+        if(length==0){
+            return 0;
+        }
+        int left=0;
+        int right=length-1;
+        int mid;
+        while(left<right){
+            mid=left+((right-left)>>1);
+            if(nums[mid]<nums[mid+1]){
+                left=mid+1;
+            }else{
+                right=mid;
+            }
+        }
+        return right;
     }
 }
